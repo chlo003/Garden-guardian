@@ -1,11 +1,9 @@
 def input_temperature(temp_str: str) -> int:
-    if temp_str >= '0' and temp_str <= '40':
-        temp_str = temp_str
-    try:
-        return int(temp_str)
-    except ValueError as e:
-        print(f"Caught input_temperature error: {e}")
-        raise Exception()
+    convert_str = int(temp_str)
+    if convert_str >= 0 and convert_str <= 40:
+        return convert_str
+    else:
+        raise ValueError(convert_str)
 
 
 def test_temperature() -> None:
@@ -14,8 +12,7 @@ def test_temperature() -> None:
         data = input_temperature('25')
         print(f"Temperature is now {data}°C")
     except ValueError as e:
-        print(f"Caught input_temperature error: "
-              f"invalid literal for int() with base 10: {e}")
+        print(f"Caught input_temperature error: {e}")
     print()
     print("Input data is 'abc'")
     try:
